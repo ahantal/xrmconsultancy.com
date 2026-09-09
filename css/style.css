@@ -132,7 +132,7 @@ header.site {
   letter-spacing: 0.02em;
 }
 .brand img { height: 34px; width: auto; }
-nav.primary { display: flex; align-items: center; gap: 32px; }
+nav.primary { display: flex; align-items: center; gap: 26px; }
 nav.primary a {
   color: var(--ink-soft);
   font-size: 0.95rem;
@@ -162,7 +162,7 @@ nav.primary a.cta:hover { background: var(--gold); color: var(--ink); }
   margin: 5px 0;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 920px) {
   nav.primary {
     display: none;
     position: fixed;
