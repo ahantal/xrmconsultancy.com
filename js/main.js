@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       handleWeb3FormSubmit(form, form.querySelector(".form-status"), {
         successMessage: "Thanks, your message has been sent. We'll be in touch soon.",
-        errorMessage: "Something went wrong sending your message. Please email ali@hantal.com directly.",
+        errorMessage: "Something went wrong sending your message. Please email info@xr-masters.com directly.",
         honeypotSelector: ".hp",
       });
     });
