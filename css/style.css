@@ -528,3 +528,12 @@ footer.site .bottom {
   letter-spacing: 0.04em;
   color: var(--gold-bright);
 }
+.video-intro {
+  max-width: 720px;
+  margin-inline: auto;
+  padding: 48px 28px 28px;
+  text-align: center;
+}
+.video-intro .eyebrow { color: var(--gold-bright); }
+.video-intro h2 { color: #fff; margin: 0 0 0.4em; }
+.video-intro p { color: #b9c3cd; margin: 0; }
