@@ -551,6 +551,7 @@ footer.site .bottom {
   gap: 10px;
   font-size: 0.82rem;
 }
+footer.site .bottom a { text-decoration: underline; text-underline-offset: 2px; }
 @media (max-width: 700px) {
   footer.site .foot-grid { grid-template-columns: 1fr; }
 }
