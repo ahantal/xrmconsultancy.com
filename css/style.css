@@ -3,21 +3,22 @@
    ============================================================ */
 
 :root {
-  --ink: #14263f;         /* deep navy, from wordmark */
-  --ink-soft: #3a4d66;
-  --teal: #123047;        /* anchor dark teal/navy */
-  --teal-deep: #0b2033;
-  --gold: #ab8a55;        /* metallic accent, from icosahedron edges */
-  --gold-bright: #c7a668;
-  --paper: #f7f3ec;       /* warm off-white ground */
-  --paper-raised: #fffdf9;
-  --line: #e3dbca;
-  --text: #1c2b3a;
-  --text-muted: #5b6b7c;
+  /* XR Masters palette (re-skin 2026-09-27; token names kept from the original design) */
+  --ink: #0d3552;         /* headings, dark navy */
+  --ink-soft: #54595f;    /* XR Masters grey */
+  --teal: #004165;        /* XR Masters blue */
+  --teal-deep: #002b44;   /* dark bands, footer */
+  --gold: #fe4f06;        /* XR Masters orange (accent) */
+  --gold-bright: #ff7a3d; /* orange on dark backgrounds */
+  --paper: #f5f7f9;       /* light grey ground */
+  --paper-raised: #ffffff;
+  --line: #e1e5ea;
+  --text: #2b3238;
+  --text-muted: #5f666d;
   --max: 1180px;
 
-  --font-head: "Fraunces", "Iowan Old Style", Georgia, serif;
-  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-head: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -41,12 +42,12 @@ a:hover { color: var(--gold); }
 h1, h2, h3, h4 {
   font-family: var(--font-head);
   color: var(--ink);
-  line-height: 1.15;
+  line-height: 1.2;
   margin: 0 0 0.5em;
-  font-weight: 600;
+  font-weight: 700;
 }
 
-h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); letter-spacing: -0.01em; }
+h1 { font-size: clamp(2.2rem, 4.6vw, 3.3rem); font-weight: 800; letter-spacing: -0.01em; }
 h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); }
 h3 { font-size: 1.3rem; }
 
@@ -59,8 +60,11 @@ p { margin: 0 0 1em; color: var(--text); }
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--gold);
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 0.9em;
+  padding-left: 12px;
+  border-left: 2px solid var(--gold);
+  line-height: 1.3;
 }
 
 .lede {
@@ -93,10 +97,10 @@ section.tight { padding: 56px 0; }
   transition: all 0.18s ease;
 }
 .btn-primary {
-  background: var(--ink);
-  color: var(--paper-raised);
+  background: var(--gold);
+  color: #fff;
 }
-.btn-primary:hover { background: var(--gold); color: var(--ink); }
+.btn-primary:hover { background: var(--teal); color: #fff; }
 .btn-ghost {
   background: transparent;
   color: var(--ink);
@@ -109,9 +113,9 @@ header.site {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(247, 243, 236, 0.92);
+  background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--line);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
 }
 .nav-row {
   display: flex;
@@ -126,26 +130,43 @@ header.site {
   align-items: center;
   gap: 10px;
   font-family: var(--font-head);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.05rem;
   color: var(--ink);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
-.brand img { height: 34px; width: auto; }
+.brand img { height: 40px; width: auto; }
 nav.primary { display: flex; align-items: center; gap: 26px; }
 nav.primary a {
   color: var(--ink-soft);
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 0.98rem;
+  font-weight: 400;
+  position: relative;
 }
-nav.primary a.current { color: var(--ink); font-weight: 600; }
+nav.primary a:hover { color: var(--gold); }
+nav.primary a.current { color: var(--gold); }
 nav.primary a.cta {
-  color: var(--paper-raised);
-  background: var(--ink);
+  color: #fff;
+  background: var(--gold);
   padding: 10px 18px;
   border-radius: 3px;
+  font-weight: 500;
 }
-nav.primary a.cta:hover { background: var(--gold); color: var(--ink); }
+nav.primary a.cta:hover { background: var(--teal); color: #fff; }
+@media (min-width: 921px) {
+  /* small dot separators between menu items, as on xr-masters.com */
+  nav.primary a:not(.cta):not(:first-child)::before {
+    content: "";
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    width: 3px;
+    height: 3px;
+    margin-top: -1px;
+    border-radius: 50%;
+    background: #b8bec4;
+  }
+}
 
 .nav-toggle {
   display: none;
@@ -211,6 +232,48 @@ nav.primary a.cta:hover { background: var(--gold); color: var(--ink); }
   .hero-arenas { grid-template-columns: 1fr; }
 }
 
+/* Home: full-width photo hero (assets/hero.jpg, from Images/Location aware AI Ft Christine STT.png) */
+.hero-photo {
+  position: relative;
+  padding: 150px 0 130px;
+  background: #1d2023 url("../assets/hero.jpg") center / cover no-repeat;
+  color: #fff;
+}
+.hero-photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 20, 35, 0.9) 0%, rgba(0, 20, 35, 0.72) 45%, rgba(0, 20, 35, 0.15) 80%, rgba(0, 20, 35, 0.05) 100%);
+}
+.hero-photo .wrap { position: relative; }
+.hero-photo h1 { color: #fff; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35); }
+.hero-photo .eyebrow { color: #fff; border-left-color: var(--gold); }
+.hero-photo .lede { color: #e6ecf1; }
+.hero-photo .btn-ghost { color: #fff; border-color: rgba(255, 255, 255, 0.8); }
+.hero-photo .btn-ghost:hover { color: #fff; border-color: var(--gold); background: var(--gold); }
+@media (max-width: 700px) {
+  .hero-photo { padding: 96px 0 80px; background-position: 78% center; }
+  .hero-photo::before { background: rgba(0, 20, 35, 0.68); }
+}
+
+/* Blue band under the photo hero, carrying the three focus areas */
+.arenas-band { background: var(--teal); padding: 0; }
+.arenas-band .hero-arenas {
+  margin-top: 0;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+}
+.arenas-band .hero-arenas div {
+  background: var(--teal);
+  color: #fff;
+  text-align: center;
+  font-family: var(--font-head);
+  font-weight: 400;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  padding: 30px 20px;
+}
+
 /* ---------- sections on dark ---------- */
 .band-dark {
   background: var(--teal-deep);
@@ -239,6 +302,7 @@ nav.primary a.cta:hover { background: var(--gold); color: var(--ink); }
 .boxes-lg .card {
   padding: 44px 40px;
   border-top: 3px solid var(--gold);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
 }
 .boxes-lg .card h3 { font-size: 1.5rem; }
 .boxes-lg .card p { color: var(--text-muted); font-size: 1.02rem; }
@@ -279,8 +343,8 @@ nav.primary a.cta:hover { background: var(--gold); color: var(--ink); }
   font-family: var(--font-head);
   font-weight: 600;
   color: var(--ink-soft);
-  font-size: 1.02rem;
-  opacity: 0.85;
+  font-size: 0.98rem;
+  opacity: 0.9;
 }
 
 /* ---------- signature band ---------- */
@@ -294,7 +358,7 @@ nav.primary a.cta:hover { background: var(--gold); color: var(--ink); }
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 85% 20%, rgba(171,138,85,0.16), transparent 55%);
+  background: radial-gradient(circle at 85% 20%, rgba(254,79,6,0.14), transparent 55%);
   pointer-events: none;
 }
 .signature .inner { position: relative; }
@@ -447,15 +511,15 @@ form.contact-form textarea { resize: vertical; min-height: 130px; }
 
 /* ---------- CTA band ---------- */
 .cta-band {
-  background: var(--ink);
+  background: var(--teal);
   color: #fff;
   padding: 64px 0;
   text-align: center;
 }
 .cta-band h2 { color: #fff; }
 .cta-band p { color: #c7cfd6; max-width: 520px; margin: 0 auto 28px; }
-.cta-band .btn-primary { background: var(--gold); color: var(--ink); }
-.cta-band .btn-primary:hover { background: #fff; }
+.cta-band .btn-primary { background: var(--gold); color: #fff; }
+.cta-band .btn-primary:hover { background: #fff; color: var(--gold); }
 
 /* ---------- footer ---------- */
 footer.site {
@@ -499,7 +563,8 @@ footer.site .bottom {
 
 .person-role {
   font-family: var(--font-head);
-  font-size: 1.05rem;
+  font-weight: 600;
+  font-size: 1rem;
   color: var(--text);
   margin: 0 0 0.9em;
 }
